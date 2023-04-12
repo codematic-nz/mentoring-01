@@ -1,0 +1,10 @@
+<svg version="1.1" baseProfile="full" width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+
+  <rect x="32" y="0" width="96" height="32" fill="#00FF21" />
+  <rect x="0" y="32" width="32" height="64" fill="#00FF21" />
+  <rect x="32" y="96" width="96" height="32" fill="#00FF21" />
+  
+  <rect x="48" y="48" width="24" height="48" fill="#03B337" />
+  <rect x="88" y="48" width="24" height="48" fill="#03B337" />
+  
+</svg>

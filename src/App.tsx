@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import codematicLogo from '/codematic.svg'
+import codematicLogo from './assets/codematic.svg'
 import './App.css'
 
 function App() {
