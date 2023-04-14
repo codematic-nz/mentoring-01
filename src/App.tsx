@@ -1,9 +1,15 @@
 import { useState } from 'react'
 import codematicLogo from './assets/codematic.svg'
 import './App.css'
+import Trade from './Trade'
 
 function App() {
-  const [balance, setCount] = useState(0)
+  const [balance, setBalance] = useState(0);
+
+  function tradeClick(text: string, amount: number){
+    console.log(`${text} trade clicked`);
+    setBalance(balance + amount);
+  }
 
   return (
     <div className="App">
@@ -15,12 +21,8 @@ function App() {
       <h1>Trade Simulator</h1>
       <div className="card">
         <div className="card">Balance: {balance}</div>
-        <button onClick={() => setCount((balance) => balance + 1)}>
-          buy
-        </button>
-        <button onClick={() => setCount((balance) => balance - 1)}>
-          sell
-        </button>
+        <Trade initialText="Sell" amount={-1} onTradeClick={tradeClick}></Trade>
+        <Trade initialText="Buy" amount={1} onTradeClick={tradeClick}></Trade>
       </div>
       <p className="read-the-docs">
         Trading commodities to make profits
