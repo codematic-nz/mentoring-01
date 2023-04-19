@@ -1,15 +1,15 @@
 import { useState } from "react";
 
 interface TradeProps {
-    initialText: string;
+    buySell: string;
     amount: number;
     onTradeClick: (text: string, amount: number) => void;
 }
 
-export default function Trade({ initialText, amount, onTradeClick }: TradeProps) {
-    const [text, setValue] = useState(initialText);
+export default function Trade({ buySell: buySell, amount, onTradeClick }: TradeProps) {
+    const [text, setValue] = useState(buySell);
     return <button
-        onClick={() => onTradeClick(initialText, amount)}>
+        onClick={() => onTradeClick(buySell, amount)}>
         {text}
     </button>;
 }

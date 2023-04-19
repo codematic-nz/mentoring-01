@@ -21,8 +21,8 @@ function App() {
       <h1>Trade Simulator</h1>
       <div className="card">
         <div className="card">Balance: {balance}</div>
-        <Trade initialText="Sell" amount={-1} onTradeClick={tradeClick}></Trade>
-        <Trade initialText="Buy" amount={1} onTradeClick={tradeClick}></Trade>
+        <Trade buySell="Sell" amount={-1} onTradeClick={tradeClick}></Trade>
+        <Trade buySell="Buy" amount={1} onTradeClick={tradeClick}></Trade>
       </div>
       <p className="read-the-docs">
         Trading commodities to make profits
