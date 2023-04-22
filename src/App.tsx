@@ -4,6 +4,8 @@ import './App.css'
 import TradeButton from './TradeButton'
 
 class Trade {
+  static BUY_SIDE: string = 'BUY';
+  static SELL_SIDE: string = 'SELL';
   constructor(
     id: Number,
     symbol: String,
@@ -19,13 +21,35 @@ class Trade {
 
 function App() {
   const [trades, setTrades] = useState(Array<Trade>);
-  const [balance, setBalance] = useState(0);
+  const [totalVol, setTotalVol] = useState(10);
+  const [funds, setFunds] = useState(1000.0);
+  let nextTradeId: Number = 1;
+  const symbol: string = 'GOLD';
+  const brokerId: number = 1;
+  const traderId: number = 1;
+  const clientId: number = 1;
+  let price: number = 100.55;
+  let volume: number = 1;
 
-  function handleTrade(text: string, amount: number) {
-    console.log(`${text} trade clicked`);
-    setBalance(balance + amount);
+  function handleTrade(side: string) {
+    console.log(`${side} trade`);
+    const cost: number = price * ((side === Trade.SELL_SIDE) ? volume : (volume * -1));
+    const volChange: number = (side === Trade.BUY_SIDE) ? volume : (volume * -1);
+    const newFundsRounded = parseFloat((funds + cost).toFixed(2));
+    setTotalVol(totalVol + volChange);
+    setFunds(newFundsRounded);
     let updatedTrades = trades.slice();
-    updatedTrades.push(new Trade(1, 'GOLD', new Date(), 2, 3, 4, 100.55, 20, 'BUY'));
+    updatedTrades.push(new Trade(
+      nextTradeId,
+      symbol,
+      new Date(),
+      brokerId,
+      traderId,
+      clientId,
+      price,
+      volume,
+      side
+    ));
     setTrades(updatedTrades);
   }
 
@@ -38,9 +62,11 @@ function App() {
       </div>
       <h1>Trade Simulator</h1>
       <div className="card">
-        <div className="card">Balance: {balance}</div>
-        <TradeButton text="Sell" onTradeClick={() => handleTrade('SELL', -1)}></TradeButton>
-        <TradeButton text="Buy" onTradeClick={() => handleTrade('BUY', 1)}></TradeButton>
+        <div className="card">Funds: <span data-test-id="funds">{funds}</span></div>
+        <div data-test-id="total-vol" className="card">Total Vol: {totalVol}</div>
+        <div data-test-id="price" className="card">Current Price: {price}</div>
+        <TradeButton text="Sell" onTradeClick={() => handleTrade(Trade.SELL_SIDE)}></TradeButton>
+        <TradeButton text="Buy" onTradeClick={() => handleTrade(Trade.BUY_SIDE)}></TradeButton>
       </div>
       <p className="read-the-docs">
         Trading commodities to make profits
