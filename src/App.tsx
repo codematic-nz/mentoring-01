@@ -24,7 +24,7 @@ function App() {
   const [totalVol, setTotalVol] = useState(10);
   const [funds, setFunds] = useState(1000.0);
   let nextTradeId: Number = 1;
-  const symbol: string = 'GOLD';
+  const symbol: string = 'COFFEE';
   const brokerId: number = 1;
   const traderId: number = 1;
   const clientId: number = 1;
