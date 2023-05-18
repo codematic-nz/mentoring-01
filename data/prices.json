@@ -1,0 +1,12 @@
+[
+    {
+        "date": "2021-10-18T12:00:00",
+        "instrument_pair": {
+            "id": "COFFEE_NZD",
+            "instrument_a": "COFFEE",
+            "instrument_b": "NZD"
+        },
+        "bid": 100.1,
+        "ask": 101.2
+    }
+]

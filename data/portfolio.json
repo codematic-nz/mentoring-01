@@ -1,0 +1,14 @@
+{
+    "positions": [
+        {
+            "instrument": "NZD",
+            "quantity": 1000.0
+        },
+        {
+            "instrument": "COFFEE",
+            "quantity": 20.0
+        }
+    ],
+    "trades": [],
+    "base_instrument": "NZD"
+}
