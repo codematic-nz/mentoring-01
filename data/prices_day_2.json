@@ -1,12 +1,14 @@
 [
     {
-        "date": "2021-10-18T12:00:00",
+        "date": "2021-10-19T12:00:00",
         "instrument_pair": {
             "id": "COFFEE_NZD",
             "instrument_a": "COFFEE",
             "instrument_b": "NZD"
         },
-        "bid": 100.1,
-        "ask": 101.2
+        "bid": 97.8,
+        "ask": 99.5,
+        "fee_percent": 0.1,
+        "fee_instrument": "NZD"
     }
 ]

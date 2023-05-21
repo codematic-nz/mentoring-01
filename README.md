@@ -21,6 +21,5 @@ tbc
 - Make sure you have the latest Node LTS installed from https://nodejs.org/en/download
 - run `npm init playwright@latest` from a terminal
 
-
 See https://playwright.dev/ for more detailed and up to date information.
 
