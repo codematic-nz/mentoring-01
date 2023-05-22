@@ -10,5 +10,5 @@ def index():
     index_page(model)
 
 
-ui.run(title='Trading Simulator', port=8080, favicon='app_logo.svg',
-       reload=True, native=False)
+ui.run(title='Trading Simulator', favicon='app_logo.svg',
+       reload=False, native=False)

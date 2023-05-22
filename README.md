@@ -10,7 +10,10 @@ The purpose of this web application is to provide a simple solution that can be 
 <br>
 
 ## Running 
-tbc
+
+To run the server application locally, simply run:
+
+`python app.py`
 
 <br>
 
