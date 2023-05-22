@@ -9,11 +9,23 @@ The purpose of this web application is to provide a simple solution that can be 
 
 <br>
 
+## Setup
+
+From within VS Code do the following:
+- Setup a new Virtual Environment `.venv`
+- Install the required packages from `requirements.txt`
+
+<br>
+
 ## Running 
 
 To run the server application locally, simply run:
 
 `python app.py`
+
+or
+
+use the `Simulator` VS Code launch configuration
 
 <br>
 
