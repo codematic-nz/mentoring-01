@@ -86,7 +86,7 @@ class AppModel:
     def load_prices(self) -> List[Price]:
         prices = []
         data = json.loads(
-            Path(f'data/prices_day_{self.day_no}.json').read_text()
+            Path(f'data/prices_day_{self.day_no}.json').read_text()  # TODO: BUG handle missing price file
         )
         for price in data:
             prices.append(
@@ -130,7 +130,7 @@ class AppModel:
                 instrument_b=self.sel_price.instrument_pair.instrument_b,
                 price=float(self.sel_price_ask_text),
                 quantity=quantity * (1 if buy_sell == BuySell.BUY else -1),
-                fee=0,  # TODO: calculate fee
+                fee=0,  # TODO: BUG calculate fee
                 fee_instrument=self.sel_price.fee_instrument,
                 stage=TradeStage.NEW
             )
@@ -144,13 +144,13 @@ class AppModel:
         self.update_positions(trade)
 
     def clear_trade(self, trade: Trade) -> None:
-        pass  # TODO: implement
+        pass  # TODO: implement clear trade
 
     def settle_trade(self, trade: Trade) -> None:
-        pass  # TODO: implement
+        pass  # TODO: implement settle trade
 
     def cancel_trade(self, trade: Trade) -> None:
-        pass  # TODO: implement
+        pass  # TODO: implement cancel trade
 
     def get_position_for_instrument(self, instrument: str) -> Position:
         return [pos for pos in self.portfolio.positions
@@ -169,8 +169,9 @@ class AppModel:
 
         pos_fee = self.get_position_for_instrument(trade.fee_instrument)
         pos_fee.quantity -= trade.fee
-        # TODO: handle going negative in positions
+        # TODO: BUG handle going negative in positions
 
     def next_day(self):
         self.day_no += 1
         self.prices = self.load_prices()
+        # TODO: BUG needs to reset selected price

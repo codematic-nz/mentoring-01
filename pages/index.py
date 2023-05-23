@@ -36,12 +36,12 @@ def index_page(model: AppModel):
             }
         )
         trades.update()
-        # TODO: update positions table
+        # TODO: BUG update positions table
 
     with ui.row():
         ui.html(Path('app_logo.svg').read_text()).tailwind('w-10 h-10')
         ui.label('Trading Simulator').tailwind('text-3xl font-bold text-center')
-        ui.button('Next Day', on_click=model.next_day).tailwind('ml-auto')  # TODO: refresh prices
+        ui.button('Next Day', on_click=model.next_day).tailwind('ml-auto')  # TODO: BUG refresh prices
 
     with ui.row():
         ui.table(
@@ -63,7 +63,7 @@ def index_page(model: AppModel):
             } for price in model.prices
         ]
         ui.table(
-            title='Market Prices',
+            title='Market Prices',  # TODO: BUG show fee instrument
             columns=[
                 {'label': 'Date', 'field': 'date', 'align': 'left'},
                 {'label': 'Instruments', 'field': 'instrument_pair'},
@@ -90,7 +90,7 @@ def index_page(model: AppModel):
         title='Trade History',
         columns=[
             {'name': 'id', 'label': 'ID', 'field': 'id'},
-            {'name': 'date', 'label': 'Date', 'field': 'date'},
+            {'name': 'date', 'label': 'Date', 'field': 'date'},  # TODO: BUG format date to local
             {'name': 'buy_sell', 'label': 'Buy/Sell', 'field': 'buy_sell'},
             {'name': 'instrument_a', 'label': 'Instrument A', 'field': 'instrument_a'},
             {'name': 'instrument_b', 'label': 'Instrument B', 'field': 'instrument_b'},
@@ -101,17 +101,3 @@ def index_page(model: AppModel):
         ],
         rows=[{'id': trade.id} for trade in model.portfolio.trades],
     )
-
-    # ui.table(
-    #     title='Trade History',
-    #     columns=[
-    #         {'name': 'id', 'label': 'ID', 'field': 'id'},
-    #         {'name': 'date', 'label': 'Date', 'field': 'date'},
-    #         {'name': 'buy_sell', 'label': 'Buy/Sell', 'field': 'buy_sell'},
-    #         {'name': 'symbol', 'label': 'Symbol', 'field': 'symbol'},
-    #         {'name': 'ccy', 'label': 'CCY', 'field': 'ccy'},
-    #         {'name': 'rate', 'label': 'Rate', 'field': 'rate'},
-    #         {'name': 'quantity', 'label': 'Quantity', 'field': 'quantity'}
-    #     ],
-    #     rows=model.get_trades(),
-    # )
