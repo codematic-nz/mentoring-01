@@ -22,7 +22,7 @@ def index_page(model: AppModel):
         ui.notify(f'BUY trade executed - ID {trade.id}', type='positive')
 
     def add_new_trade(trade: Trade):
-        trades.rows.append(
+        trades.add_rows(
             {
                 'id': trade.id,
                 'date': trade.date.strftime('%Y-%m-%d %H:%M:%S'),
@@ -35,7 +35,6 @@ def index_page(model: AppModel):
                 'fee_instrument': trade.fee_instrument
             }
         )
-        trades.update()
         # TODO: BUG update positions table
 
     with ui.row():
@@ -77,14 +76,13 @@ def index_page(model: AppModel):
             on_select=select_market_item
         )
 
-    with ui.card().bind_visibility(model, 'sel_instrument_pair'):
-        with ui.row():
-            ui.label('').bind_text(model, 'sel_instrument_pair').tailwind('text-2xl font-bold')
-
-        with ui.row():
+        with ui.card().bind_visibility(model, 'sel_instrument_pair'):
+            ui.label('').bind_text(model, 'sel_instrument_pair').tailwind('text-xl')
             qty = ui.number(label='Quantity', min=1, max=100, step=1, value=1)
-            ui.button('Buy', on_click=lambda: execute_buy(qty.value))
-            ui.button('Sell', on_click=lambda: execute_sell(qty.value))
+
+            with ui.row():
+                ui.button('Buy', on_click=lambda: execute_buy(qty.value))
+                ui.button('Sell', on_click=lambda: execute_sell(qty.value))
 
     trades = ui.table(
         title='Trade History',

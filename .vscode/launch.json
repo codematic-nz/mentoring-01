@@ -5,12 +5,26 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Simulator",
+            "name": "Start [Reload]",
             "type": "python",
             "request": "launch",
             "program": "app.py",
             "console": "integratedTerminal",
-            "justMyCode": true
+            "justMyCode": true,
+            "env": {
+                "RELOAD": "true"
+            }
+        },
+        {
+            "name": "Start [Debug]",
+            "type": "python",
+            "request": "launch",
+            "program": "app.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "RELOAD": "false"
+            }
         }
     ]
 }
